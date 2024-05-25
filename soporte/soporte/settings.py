@@ -55,7 +55,9 @@ ROOT_URLCONF = 'soporte.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            join(BASE_DIR, 'vistas')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
