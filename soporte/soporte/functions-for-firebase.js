@@ -11,3 +11,4 @@ function guardar() {
         alert("Error en el registro ", e);
     }
 }
+

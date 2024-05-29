@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Ticket</title>
+</head>
+<body>
+    <h2>Crear Nuevo Ticket</h2>
+    <form id="ticketForm">
+        <label for="name">Nombre del Ticket:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="description">Descripción:</label><br>
+        <textarea id="description" name="description" required></textarea><br><br>
+        
+        <label for="date">Fecha:</label><br>
+        <input type="date" id="date" name="date" required><br><br>
+        
+        <label for="status">Estado:</label><br>
+        <input type="checkbox" id="status" name="status"><br><br>
+        
+        <button type="submit">Enviar</button>
+    </form>
+
+    <script src="/soporte/soporte/rest-api/put.js"></script>
+</body>
+</html>

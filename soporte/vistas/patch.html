@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Tickets</title>
+</head>
+<body>
+    <h2>Actualizar Datos de Tickets</h2>
+
+    <!-- Selección de Ticket -->
+    <label for="ticketId">Selecciona un Ticket:</label><br>
+    <select id="ticketId" name="ticketId">
+        <option value="">Cargando tickets...</option>
+    </select><br><br>
+
+    <!-- Formulario para Actualizar Ticket -->
+    <form id="updateForm">
+        <label for="name">Nombre del Ticket:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="description">Descripción:</label><br>
+        <textarea id="description" name="description" required></textarea><br><br>
+        
+        <label for="date">Fecha:</label><br>
+        <input type="date" id="date" name="date" required><br><br>
+        
+        <label for="status">Estado:</label><br>
+        <input type="checkbox" id="status" name="status"><br><br>
+        
+        <button type="submit">Actualizar</button>
+    </form>
+
+    <script>
+        // URL de la base de datos Firebase
+        const firebaseUrl = 'https://fir-servicio-tecnico-default-rtdb.firebaseio.com/tickeds.json';
+
+        // Obtener lista de tickets al cargar la página
+        fetch(firebaseUrl)
+            .then(response => response.json())
+            .then(data => {
+                const ticketSelect = document.getElementById('ticketId');
+                ticketSelect.innerHTML = '';  // Limpiar opciones
+                for (const id in data) {
+                    const option = document.createElement('option');
+                    option.value = id;
+                    option.text = id;
+                    ticketSelect.appendChild(option);
+                }
+            })
+            .catch(error => console.error('Error al obtener los datos:', error));
+
+        // Manejar envío del formulario
+        document.getElementById('updateForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Obtener valores del formulario
+            const ticketId = document.getElementById('ticketId').value;
+            if (!ticketId) {
+                alert('Por favor selecciona un ticket para actualizar.');
+                return;
+            }
+
+            const name = document.getElementById('name').value;
+            const description = document.getElementById('description').value;
+            const date = document.getElementById('date').value;
+            const status = document.getElementById('status').checked;
+
+            // Crear objeto de datos
+            const ticketData = {
+                name: name,
+                description: description,
+                date: date,
+                status: status
+            };
+
+            // URL específica para el ticket seleccionado
+            const ticketUrl = `https://fir-servicio-tecnico-default-rtdb.firebaseio.com/tickeds/${ticketId}.json`;
+
+            // Enviar datos a Firebase usando fetch y PATCH
+            fetch(ticketUrl, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(ticketData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Datos actualizados exitosamente:', data);
+                alert('Ticket actualizado exitosamente');
+            })
+            .catch(error => {
+                console.error('Error al actualizar los datos:', error);
+                alert('Hubo un error al actualizar el ticket');
+            });
+        });
+    </script>
+</body>
+</html>

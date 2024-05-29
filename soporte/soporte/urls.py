@@ -5,7 +5,7 @@ from django.conf import settings
 from .views import principal
 
 urlpatterns = [
-    path('', principal, name="principal"),
+    path('', principal, name="principal"),  
 ]
 
 
