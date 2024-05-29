@@ -9,15 +9,30 @@
     <title>Soporte Tecnico</title>
 </head>
 <body>
-    <div>
-        <h1 class="text-center">Crud Soporte</h1>
-        <ul style="display: flex; justify-content: space-around;">
-            <li><button class="btn btn-success">Agregar</button></li>
-            <li><button class="btn btn-primary">Listar</button></li>
-            <li><button class="btn btn-success">Actualizar</button></li>
-            <li><button class="btn btn-danger">Eliminar</button></li>
-        </ul>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <form>
+                    <div>
+                      <label for="exampleInputEmail1" class="form-label">Nombre</label>
+                      <input type="text" class="form-control" id="name" aria-describedby="emailHelp">
+                    </div>
+
+                    <div>
+                      <label for="exampleInputPassword1" class="form-label">Apellido</label>
+                      <input type="text" class="form-control" id="last">
+                    </div>
+                </form>
+                <button class="btn btn-primary" onclick="guardar()">Enviar</button>
+            </div>
+        </div>
     </div>
-    
+
+    <!--IMPORTACIONES SOBRE FIREBASE-->
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
+    <!--Mis importaciones-->
+    <script src="/soporte/soporte/confi-firebase.js"></script>
+    <script src="/soporte/soporte/functions-for-firebase.js"></script>
 </body>
 </html>
