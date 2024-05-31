@@ -2,13 +2,16 @@
 
 function guardar() {
     try {
-        const docRef = firebase.firestore().collection("usuarios").add({
+        firebase.firestore().collection("usuarios").add({
             nombre: document.getElementById("name").value,
             apellido: document.getElementById("last").value,
+        })
+        .then(() => {
+            alert("congrat, registro exitoso.");
+            window.location.href = "pruebapost.html";
         });
-        alert("congrat, registro exitoso.");
     } catch (e) {
-        alert("Error en el registro ", e);
+        alert("Error en el registro: " + e);
     }
 }
 
