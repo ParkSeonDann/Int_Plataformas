@@ -26,7 +26,6 @@ gunicorn==22.0.0
 httplib2==0.22.0
 idna==3.7
 msgpack==1.0.8
-mysqlclient==2.1.1
 packaging==24.1
 Pillow==9.5.0
 platformdirs==4.2.2
@@ -39,7 +38,6 @@ PyJWT==2.8.0
 pyparsing==3.1.2
 requests==2.32.2
 rsa==4.9
-sqlparse==0.4.4
 stripe==5.4.0
 sweetify==2.3.1
 tzdata==2023.3
