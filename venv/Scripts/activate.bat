@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\canti\Downloads\Int_Plataformas\venv
+set VIRTUAL_ENV=C:\Users\canti\Desktop\Int_Plataformas\venv
 
 if not defined PROMPT set PROMPT=$P$G
 

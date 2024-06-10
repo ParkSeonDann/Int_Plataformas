@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\canti\Downloads\Int_Plataformas\venv"
+VIRTUAL_ENV="C:\Users\canti\Desktop\Int_Plataformas\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
