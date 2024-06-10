@@ -2,21 +2,25 @@ document.getElementById('ticketForm').addEventListener('submit', function(e) {
     e.preventDefault();
 
     // Obtener valores del formulario
-    const name = document.getElementById('name').value;
+    const title = document.getElementById('title').value;
     const description = document.getElementById('description').value;
-    const date = document.getElementById('date').value;
-    const status = document.getElementById('status').checked;
+    const priority = document.getElementById('priority').value;
+    const status = document.getElementById('status').value;
+    const ticketDate = document.getElementById('ticketDate').value;
+    const updateDate = document.getElementById('updateDate').value;
 
     // Crear objeto de datos
     const ticketData = {
-        name: name,
+        title: title,
         description: description,
-        date: date,
-        status: status
+        priority: priority,
+        status: status,
+        ticketDate: ticketDate,
+        updateDate: updateDate
     };
 
     // Nombre único para el ticket, podrías usar un UUID o similar en un entorno real
-    const ticketId = name.replace(/\s+/g, '-').toLowerCase();
+    const ticketId = title.replace(/\s+/g, '-').toLowerCase();
 
     // URL de Firebase
     const firebaseUrl = `https://fir-servicio-tecnico-default-rtdb.firebaseio.com/tickeds/${ticketId}.json`;

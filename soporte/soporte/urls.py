@@ -2,10 +2,12 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
-from .views import principal
+from .views import *
 
 urlpatterns = [
     path('', principal, name="principal"),  
+    path('patch.html/', patch, name="patch"),  
+    path('pruebapost.html/', pruebapost, name="pruebapost"),  
 ]
 
 
