@@ -41,6 +41,10 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'intplataformas-production.up.railway.app',
+]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
