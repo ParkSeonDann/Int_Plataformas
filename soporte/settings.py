@@ -42,7 +42,7 @@ INSTALLED_APPS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://intplataformas-production.up.railway.app',
+    'https://web-production-5311d.up.railway.app/',
 ]
 
 MIDDLEWARE = [
