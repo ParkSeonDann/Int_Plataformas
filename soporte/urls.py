@@ -6,8 +6,11 @@ from django.conf import settings
 
 urlpatterns = [
     path('', principal, name="principal"),
-    path('pruebapost.html/', pruebapost, name="pruebapost"),
-    path('patch.html/', patch, name="patch"),
+    path('login/', login, name="login"),
+    path('agregar/', post, name="post"),
+    path('modificar/', patch, name="patch"),
+    path('listar/', listar, name="listar"),
+    path('eliminar/', delete, name="delete"),
     path('admin/', admin.site.urls),
 ]
 

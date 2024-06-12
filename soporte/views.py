@@ -4,8 +4,17 @@ from django.http import HttpResponse
 def principal(request):
     return render(request, 'index.html')
 
-def pruebapost(request):
-    return render(request, 'pruebapost.html')
+def post(request):
+    return render(request, 'post.html')
 
 def patch(request):
     return render(request, 'patch.html')
+
+def delete(request):
+    return render(request, 'delete.html')
+
+def listar(request):
+    return render(request, 'listar.html')
+
+def login(request):
+    return render(request, 'login.html')

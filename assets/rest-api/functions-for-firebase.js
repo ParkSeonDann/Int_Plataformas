@@ -1,17 +1,25 @@
-// functions-for-firebase.js
-
 function guardar() {
     try {
         firebase.firestore().collection("usuarios").add({
-            nombre: document.getElementById("name").value,
-            apellido: document.getElementById("last").value,
+            usuario: document.getElementById("name").value,
+            password: document.getElementById("password").value,
         })
         .then(() => {
-            alert("congrat, registro exitoso.");
-            window.location.href = "pruebapost.html";
+            Swal.fire({
+                icon: 'success',
+                title: 'Registro exitoso',
+                text: '¡Bienvenido!',
+                confirmButtonText: 'Continuar',
+            }).then(() => {
+                window.location.href = "agregar";
+            });
         });
     } catch (e) {
-        alert("Error en el registro: " + e);
+        Swal.fire({
+            icon: 'error',
+            title: 'Error en el registro',
+            text: 'Hubo un problema durante el registro. Por favor, inténtalo de nuevo.',
+            confirmButtonText: 'Entendido',
+        });
     }
 }
-

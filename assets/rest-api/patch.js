@@ -60,7 +60,7 @@ document.getElementById('updateForm').addEventListener('submit', function(e) {
     // Obtener ID del ticket seleccionado
     const selectedTicketId = document.getElementById('ticketId').value;
     if (!selectedTicketId) {
-        alert('Por favor selecciona un ticket para actualizar.');
+        swal("Por favor selecciona un ticket para actualizar.");
         return;
     }
 
@@ -96,10 +96,10 @@ document.getElementById('updateForm').addEventListener('submit', function(e) {
     .then(response => response.json())
     .then(data => {
         console.log('Datos actualizados exitosamente:', data);
-        alert('Ticket actualizado exitosamente');
+        Swal.fire("Ticket actualizado exitosamente");
     })
     .catch(error => {
         console.error('Error al actualizar los datos:', error);
-        alert('Hubo un error al actualizar el ticket');
+        swal("Hubo un error al actualizar el ticket");
     });
 });
