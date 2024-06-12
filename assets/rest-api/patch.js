@@ -1,3 +1,4 @@
+
 // Función para cargar los tickets desde Firebase y poblar el menú desplegable
 function cargarTickets() {
     fetch('https://fir-servicio-tecnico-default-rtdb.firebaseio.com/tickeds.json')
