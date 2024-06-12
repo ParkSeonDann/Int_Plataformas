@@ -1,23 +1,25 @@
-// Cambia la función guardar para que use SweetAlert2
 function guardar() {
-    const usuario = document.getElementById("name").value;
-    const contraseña = document.getElementById("password").value;
-    
-    // Verificar usuario y contraseña
-    if ((usuario === "fabi_soporte" || usuario === "danilo_soporte") && contraseña === "duoc1234") {
-        // Usuario y contraseña correctos, redirigir al usuario a la página post.html
-        window.location.href = "agregar";
-    } else {
-        // Usuario y/o contraseña incorrectos, mostrar mensaje de error con SweetAlert2
+    try {
+        firebase.firestore().collection("usuarios").add({
+            usuario: document.getElementById("name").value,
+            password: document.getElementById("password").value,
+        })
+        .then(() => {
+            Swal.fire({
+                icon: 'success',
+                title: 'Registro exitoso',
+                text: '¡Bienvenido!',
+                confirmButtonText: 'Continuar',
+            }).then(() => {
+                window.location.href = "agregar";
+            });
+        });
+    } catch (e) {
         Swal.fire({
             icon: 'error',
-            title: 'Error',
-            text: 'Usuario y/o contraseña incorrectos. Por favor, intenta nuevamente.'
+            title: 'Error en el registro',
+            text: 'Hubo un problema durante el registro. Por favor, inténtalo de nuevo.',
+            confirmButtonText: 'Entendido',
         });
     }
 }
-
-// Agrega el evento click al botón después de que el DOM esté cargado
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById("submitBtn").addEventListener("click", guardar);
-});

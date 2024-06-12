@@ -36,10 +36,14 @@ document.getElementById('ticketForm').addEventListener('submit', function(e) {
     .then(response => response.json())
     .then(data => {
         console.log('Datos guardados exitosamente:', data);
-        alert('Ticket creado exitosamente');
+        Swal.fire("Ticket creado exitosamente", {
+            icon: "success",
+        });
     })
     .catch(error => {
         console.error('Error al guardar los datos:', error);
-        alert('Hubo un error al crear el ticket');
+        Swal.fire("Hubo un error al crear el ticket", {
+            icon: "error",
+        });
     });
 });
