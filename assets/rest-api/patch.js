@@ -1,4 +1,3 @@
-
 // Función para cargar los tickets desde Firebase y poblar el menú desplegable
 function cargarTickets() {
     fetch('https://fir-servicio-tecnico-default-rtdb.firebaseio.com/tickeds.json')
@@ -61,7 +60,7 @@ document.getElementById('updateForm').addEventListener('submit', function(e) {
     // Obtener ID del ticket seleccionado
     const selectedTicketId = document.getElementById('ticketId').value;
     if (!selectedTicketId) {
-        swal("Por favor selecciona un ticket para actualizar.");
+        Swal.fire("Por favor selecciona un ticket para actualizar.");
         return;
     }
 
@@ -69,7 +68,7 @@ document.getElementById('updateForm').addEventListener('submit', function(e) {
     const title = document.getElementById('title').value;
     const description = document.getElementById('description').value;
     const priority = document.getElementById('priority').value;
-    const status = document.getElementById('status').checked;
+    const status = document.getElementById('status').value; // Obtener el estado como cadena
     const ticketDate = document.getElementById('ticketDate').value;
     const updateDate = document.getElementById('updateDate').value;
 
@@ -78,7 +77,7 @@ document.getElementById('updateForm').addEventListener('submit', function(e) {
         title: title,
         description: description,
         priority: priority,
-        status: status,
+        status: status, // Incluir el valor correcto del estado
         ticketDate: ticketDate,
         updateDate: updateDate
     };
@@ -101,6 +100,6 @@ document.getElementById('updateForm').addEventListener('submit', function(e) {
     })
     .catch(error => {
         console.error('Error al actualizar los datos:', error);
-        swal("Hubo un error al actualizar el ticket");
+        Swal.fire("Hubo un error al actualizar el ticket");
     });
 });

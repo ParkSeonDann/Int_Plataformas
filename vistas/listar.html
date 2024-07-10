@@ -49,6 +49,42 @@
 
     <div class="container mt-5">
         <h2>Listado de Tickets</h2>
+        
+        <!-- Formulario de filtro -->
+        <form id="filterForm" class="mb-3">
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <input type="text" id="titleFilter" class="form-control" placeholder="Filtrar por título">
+                </div>
+                <div class="col-md-2">
+                    <select id="priorityFilter" class="form-select">
+                        <option value="">Todas las prioridades</option>
+                        <option value="reparar">Reparar</option>
+                        <option value="analizar">Analizar</option>
+                        <option value="cambiar">Cambiar</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <select id="statusFilter" class="form-select">
+                        <option value="">Todos los estados</option>
+                        <option value="iniciado">Iniciado</option>
+                        <option value="revisado">Revisado</option>
+                        <option value="terminado">Terminado</option>
+                        <option value="cancelado">Cancelado</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <input type="date" id="dateFilter" class="form-control">
+                </div>
+                <div class="col-md-1">
+                    <button type="submit" class="btn btn-primary w-100">
+                        <i class="bi bi-funnel-fill"></i> Filtrar
+                    </button>
+                </div>
+                
+            </div>
+        </form>
+    
         <div class="accordion" id="ticketAccordion">
             <!-- Aquí se llenarán los tickets desde el script -->
         </div>

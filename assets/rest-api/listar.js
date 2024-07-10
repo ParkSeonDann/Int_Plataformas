@@ -1,6 +1,5 @@
-
 // Función para cargar los tickets desde Firebase y poblar el acordeón
-function cargarTickets() {
+function cargarTickets(filters = {}) {
     fetch('https://fir-servicio-tecnico-default-rtdb.firebaseio.com/tickeds.json')
         .then(response => response.json())
         .then(data => {
@@ -8,6 +7,13 @@ function cargarTickets() {
             ticketAccordion.innerHTML = '';  // Limpiar acordeón
             for (const id in data) {
                 const ticket = data[id];
+                
+                // Aplicar filtros
+                if (filters.title && !ticket.title.toLowerCase().includes(filters.title.toLowerCase())) continue;
+                if (filters.priority && ticket.priority !== filters.priority) continue;
+                if (filters.status && ticket.status !== filters.status) continue;
+                if (filters.date && new Date(ticket.ticketDate).toDateString() !== new Date(filters.date).toDateString()) continue;
+
                 const ticketItem = `
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="heading${id}">
@@ -57,19 +63,22 @@ function eliminarTicket(ticketId) {
             .then(response => {
                 if (response.ok) {
                     cargarTickets();  // Recargar la lista de tickets
-                    Swal.fire("Ticket eliminado exitosamente", {
+                    Swal.fire({
+                        title: "Ticket eliminado exitosamente",
                         icon: "success",
                     });
                 } else {
                     console.error('Error al eliminar el ticket:', response.statusText);
-                    Swal.fire("Hubo un error al eliminar el ticket", {
+                    Swal.fire({
+                        title: "Hubo un error al eliminar el ticket",
                         icon: "error",
                     });
                 }
             })
             .catch(error => {
                 console.error('Error al eliminar el ticket:', error);
-                Swal.fire("Hubo un error al eliminar el ticket", {
+                Swal.fire({
+                    title: "Hubo un error al eliminar el ticket",
                     icon: "error",
                 });
             });
@@ -77,8 +86,19 @@ function eliminarTicket(ticketId) {
     });
 }
 
+// Manejar el envío del formulario de filtro
+document.getElementById('filterForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const filters = {
+        title: document.getElementById('titleFilter').value,
+        priority: document.getElementById('priorityFilter').value,
+        status: document.getElementById('statusFilter').value,
+        date: document.getElementById('dateFilter').value
+    };
+    cargarTickets(filters);
+});
 
-// Cargar tickets al cargar la página
+// Cargar todos los tickets al cargar la página
 document.addEventListener('DOMContentLoaded', function() {
     cargarTickets();
 });
